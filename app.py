@@ -47,7 +47,7 @@ def register():
         username = form.username.data
         password = sha256_crypt.encrypt(str(form.password.data))
         #connect to db
-        conn = psycopg2.connect("dbname=myflaskapp user=postgres")
+        conn = psycopg2.connect("dbname=myflaskapp user=trsystems")
 
         # create cursor
         cur = conn.cursor()
@@ -61,7 +61,7 @@ def register():
 
         flash('You are now registered and can log in!', 'success')
 
-        redirect(url_for('index'))
+        return redirect(url_for('login'))
     return render_template('register.html', form=form)
 
 if __name__ == '__main__':
